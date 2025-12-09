@@ -104,16 +104,16 @@ class TestViewSet(viewsets.ModelViewSet):
                     ['python3', '-c', code],
                     stdin=subprocess.PIPE,
                     stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    timeout=5
+                    stderr=subprocess.PIPE
                 )
-                output, errors = process.communicate(input=input_data.encode())
+                output, errors = process.communicate(input=input_data.encode(), timeout=5)
                 if errors:
                     return f"Error: {errors.decode()}"
                 return output.decode()
             else:
                 return "Language not supported yet"
         except subprocess.TimeoutExpired:
+            process.kill()
             return "Error: Execution timeout"
         except Exception as e:
             return f"Error: {str(e)}"
@@ -137,10 +137,9 @@ class ExecuteCodeView(APIView):
                 process = subprocess.Popen(
                     ['python3', '-c', code],
                     stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    timeout=5
+                    stderr=subprocess.PIPE
                 )
-                output, errors = process.communicate()
+                output, errors = process.communicate(timeout=5)
                 
                 if errors:
                     return Response({'output': '', 'error': errors.decode()})
@@ -149,6 +148,7 @@ class ExecuteCodeView(APIView):
             else:
                 return Response({'error': 'Language not supported yet'}, status=status.HTTP_400_BAD_REQUEST)
         except subprocess.TimeoutExpired:
+            process.kill()
             return Response({'error': 'Execution timeout (5 seconds)'}, status=status.HTTP_408_REQUEST_TIMEOUT)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

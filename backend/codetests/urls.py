@@ -6,7 +6,7 @@ router = DefaultRouter()
 router.register(r'tests', TestViewSet, basename='test')
 
 urlpatterns = [
-    path('', include(router.urls)),
     path('tests/execute/', ExecuteCodeView.as_view(), name='execute_code'),
+    path('', include(router.urls)),
 ]
 
