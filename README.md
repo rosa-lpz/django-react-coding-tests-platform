@@ -1,6 +1,6 @@
 # Django React Coding Tests Platform
 
-vA full-stack web application for conducting coding tests/interviews with real-time code execution, automatic grading, and progress tracking.
+A full-stack web application for conducting coding tests/interviews with real-time code execution, automatic grading, and progress tracking.
 
 ## Images
 
