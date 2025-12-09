@@ -27,7 +27,7 @@ const CodingEnvironment = () => {
   const [output, setOutput] = useState('');
   const [loading, setLoading] = useState(true);
   const [running, setRunning] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(null);
   const [isTestActive, setIsTestActive] = useState(true);
   const autoSaveTimerRef = useRef(null);
 
@@ -47,6 +47,11 @@ const CodingEnvironment = () => {
   }, [test]);
 
   useEffect(() => {
+    // Don't start timer until timeLeft is initialized
+    if (timeLeft === null) {
+      return;
+    }
+
     if (timeLeft <= 0) {
       setIsTestActive(false);
       handleSubmit();
@@ -160,6 +165,7 @@ const CodingEnvironment = () => {
   };
 
   const formatTime = (seconds) => {
+    if (seconds === null) return '--:--';
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
