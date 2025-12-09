@@ -78,29 +78,39 @@ A full-stack coding tests platform with user authentication, candidate dashboard
    - Test user: `testuser` / `testpass123`
    - 4 sample coding tests with test cases
 
-5. **Start Django server:**
-   ```bash
-   python manage.py runserver
-   ```
-   Backend will run at: http://localhost:8000
+## Running Both Servers
 
-### Frontend Setup
+### Quick Start (Recommended) ⭐
 
-1. **Navigate to frontend:**
-   ```bash
-   cd frontend
-   ```
+**Run both servers with one command:**
+```bash
+./start-servers.sh
+```
 
-2. **Install dependencies (if not already installed):**
-   ```bash
-   npm install
-   ```
+Or using Make:
+```bash
+make dev
+```
 
-3. **Start development server:**
-   ```bash
-   npm run dev
-   ```
-   Frontend will run at: http://localhost:5173
+This will start both the Django backend (port 8000) and React frontend (port 5173) simultaneously with colored output and automatic cleanup on exit.
+
+### Manual Start
+
+**Option 1: Separate Terminals**
+
+Terminal 1 - Backend:
+```bash
+cd backend
+python manage.py runserver
+```
+
+Terminal 2 - Frontend:
+```bash
+cd frontend
+npm run dev
+```
+
+📖 **See [RUNNING.md](RUNNING.md) for more options** (tmux, screen, etc.)
 
 ## Usage
 

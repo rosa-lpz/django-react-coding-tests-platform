@@ -1,0 +1,4 @@
+# Logs directory - for development server logs
+*.log
+backend.log
+frontend.log
