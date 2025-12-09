@@ -14,8 +14,8 @@ class Test(models.Model):
     description = models.TextField()
     time_limit = models.IntegerField()  # Time limit in minutes
     difficulty = models.CharField(max_length=50, choices=DIFFICULTY_CHOICES, default='Medium')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return self.name
@@ -59,3 +59,4 @@ class CodeProgress(models.Model):
     
     def __str__(self):
         return f"{self.user.username} - {self.test.name} progress"
+
