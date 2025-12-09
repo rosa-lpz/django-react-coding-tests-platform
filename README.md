@@ -1,8 +1,20 @@
 # Django React Coding Tests Platform
 
-A full-stack web application for conducting coding tests/interviews with real-time code execution, automatic grading, and progress tracking.
+vA full-stack web application for conducting coding tests/interviews with real-time code execution, automatic grading, and progress tracking.
 
-## 🚀 Features
+## Images
+
+![code-test-platform](img/code-test-platform.gif)
+
+
+
+![1](img/2.png)
+
+
+
+![1](img/3.png)
+
+## Features
 
 ### Frontend (React + Vite)
 - ✅ **User Authentication** - JWT-based login/register
@@ -10,6 +22,7 @@ A full-stack web application for conducting coding tests/interviews with real-ti
 - 💻 **Coding Environment** with:
   - Monaco Editor (VS Code editor)
   - Multi-language support (Python, JavaScript, Java, C++)
+  - Syntax highlighting for all supported languages
   - Auto-save every 30 seconds
   - Real-time countdown timer
   - Output display panel
@@ -24,13 +37,13 @@ A full-stack web application for conducting coding tests/interviews with real-ti
 - 📊 **Submissions & Scoring** - Automatic grading
 - 👨‍💼 **Admin Panel** - Manage tests, view submissions
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - React 19
 - Vite
 - React Router DOM
-- Monaco Editor
+- Monaco Editor (syntax highlighting for 100+ languages)
 - Axios
 
 ### Backend
@@ -38,9 +51,29 @@ A full-stack web application for conducting coding tests/interviews with real-ti
 - Django REST Framework
 - djangorestframework-simplejwt
 - django-cors-headers
-- PostgreSQL/SQLite
+- PostgreSQL (production) / SQLite (development)
 
-## 📦 Installation
+Quick Start
+
+### Option 1: Docker (Recommended for Production) 🐳
+
+**Single command deployment with PostgreSQL:**
+
+```bash
+# Copy environment template and configure
+cp .env.docker.example .env.docker
+
+# Build and run
+docker-compose up --build
+```
+
+Access the application at http://localhost:8000
+
+📖 **Full Docker documentation**: See [DOCKER.md](DOCKER.md) for detailed deployment guide
+
+### Option 2: Local Development Setup
+
+For active development with hot-reload:
 
 ### Prerequisites
 - Python 3.13+
@@ -96,7 +129,7 @@ A full-stack web application for conducting coding tests/interviews with real-ti
    ```
    Frontend will run at http://localhost:5173
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 django-react-coding-tests-platform/
@@ -130,7 +163,7 @@ django-react-coding-tests-platform/
 └── codingtestsvenv/            # Python virtual environment
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 ### Authentication
 ```
@@ -150,7 +183,7 @@ POST   /api/tests/:id/save/       - Save progress
 GET    /api/tests/:id/saved/      - Get saved code
 ```
 
-## 🗄️ Database Models
+## Database Models
 
 ### Users App
 - **CustomUser** - Extended Django user model
@@ -161,7 +194,7 @@ GET    /api/tests/:id/saved/      - Get saved code
 - **Submission** - user, test, code, language, status, score, submitted_at
 - **CodeProgress** - user, test, code, language, updated_at
 
-## 🎯 Usage
+## Usage
 
 1. **Register** a new account or login
 2. **Browse** available tests on the dashboard
@@ -171,7 +204,7 @@ GET    /api/tests/:id/saved/      - Get saved code
 6. **Submit** when ready for final evaluation
 7. Code is **auto-saved** every 30 seconds
 
-## 👨‍💼 Admin Features
+## Admin Features
 
 Access admin panel at http://localhost:8000/admin/
 
@@ -181,7 +214,7 @@ Access admin panel at http://localhost:8000/admin/
 - Track candidate progress
 - Monitor scores
 
-## 🔒 Security Features
+## Security Features
 
 - JWT authentication with token refresh
 - Protected API endpoints
@@ -189,7 +222,7 @@ Access admin panel at http://localhost:8000/admin/
 - Code execution timeout (5 seconds)
 - Subprocess isolation for code execution
 
-## ⚠️ Production Considerations
+## Production Considerations
 
 For production deployment:
 
@@ -201,7 +234,7 @@ For production deployment:
 6. Enable HTTPS
 7. Add logging and monitoring
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -209,11 +242,15 @@ For production deployment:
 4. Push to the branch
 5. Create a Pull Request
 
-## 📝 License
 
-This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
+## License
+
+This project is licensed under the GNU GENERAL PUBLIC LICENSE.
+
+
+
+## Acknowledgments
 
 - Monaco Editor by Microsoft
 - Django REST Framework

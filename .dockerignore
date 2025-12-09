@@ -1,0 +1,63 @@
+# Docker ignore file
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+venv
+codingtestsvenv
+env
+.env
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Documentation
+*.md
+!README.md
+docs/
+
+# Tests
+.pytest_cache
+.coverage
+htmlcov/
+
+# Logs
+*.log
+logs/
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# Environment
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
